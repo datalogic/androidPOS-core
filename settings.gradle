@@ -1,0 +1,3 @@
+include ':aposcore'
+include ':app'
+rootProject.name = "DlApos"
