@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
+group='com.github.datalogic'
+def libVersion = "0.1-alpha"
 
 android {
     compileSdkVersion 30
@@ -10,7 +13,7 @@ android {
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName libVersion
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -25,7 +28,7 @@ android {
     libraryVariants.all { variant ->
         variant.outputs.all { output ->
             if (outputFile != null && outputFileName.endsWith('.aar')) {
-                outputFileName = "${archivesBaseName}-${variant.name}-${defaultConfig.versionName}.aar"
+                outputFileName = "${archivesBaseName}-${variant.name}.aar"
             }
         }
     }
@@ -53,4 +56,36 @@ dependencies {
     implementation 'com.github.datalogic:androidpos-controls:v0.2-alpha'
     implementation 'com.github.datalogic:androidpos-commons:v0.2-alpha'
     implementation 'com.github.mik3y:usb-serial-for-android:3.4.3'
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier.set("sources")
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId group
+            //You can either define these here or get them from project conf elsewhere
+            artifactId 'androidpos-core'
+            version libVersion
+            artifact("$buildDir/outputs/aar/aposcore-release.aar")
+            artifact sourcesJar
+            //aar artifact you want to publish
+
+            //generate pom nodes for dependencies
+            pom.withXml {
+                def dependenciesNode = asNode().appendNode('dependencies')
+                configurations.implementation.allDependencies.each { dependency ->
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', dependency.group)
+                    dependencyNode.appendNode('artifactId', dependency.name)
+                    dependencyNode.appendNode('version', dependency.version)
+                    dependencyNode.appendNode('scope', 'implementation')
+                }
+            }
+        }
+    }
+
 }
