@@ -6,12 +6,14 @@ import androidx.test.core.app.ApplicationProvider;
 
 import com.datalogic.dlapos.commons.constant.CommonsConstants;
 import com.datalogic.dlapos.commons.support.APosException;
+import com.datalogic.dlapos.commons.upos.RequestListener;
 import com.datalogic.dlapos.control.Scanner;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import static com.google.common.truth.Truth.assertThat;
+import static org.junit.Assert.fail;
 
 public class GryphonTest {
 
@@ -33,7 +35,7 @@ public class GryphonTest {
         } catch (APosException e) {
             return;
         }
-        Assert.fail();
+        fail();
     }
 
     @Test
@@ -41,7 +43,17 @@ public class GryphonTest {
         Scanner scanner = new Scanner();
         scanner.open("DL-Gryphon-GD4500-USB-OEM", context);
         assertThat(scanner.getState()).isEqualTo(CommonsConstants.S_IDLE);
-        scanner.claim(5000);
+        scanner.claim(new RequestListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onFailure(String failureDescription) {
+                fail();
+            }
+        });
         Thread.sleep(10000);
         scanner.setDeviceEnabled(true);
         scanner.setAutoDisable(false);
