@@ -1,7 +1,7 @@
 [![](https://jitpack.io/v/datalogic/androidpos-core.svg)](https://jitpack.io/#datalogic/androidpos-core)
 # Description
 This project contains the core of the **AndroidPOS** project. AndroidPOS is the porting on Android of the [Datalogic JavaPOS library](https://datalogic.github.io/javapos/overview/). Implements the [UPOS standard](https://www.omg.org/spec/UPOS/) (v 1.14) to allow Android POS/POE/tablet to communicate with Datalogic scanners and scales.<br>
-Communication is supported **USB-OEM only, USB-COM is included but it does not work on all devices**.<br>
+<mark>**Communication is only supported via USB-OEM, USB-COM is included but it does not work on all devices**.<br></mark>
 The Android module :
 - allows to listen for scan or weight events.
 - allows Firmware comparison and update.
@@ -27,9 +27,9 @@ Add the following dependency to your gradle file:
 	}
 ~~~
 ## Integrate a scanner
-The generic setup for a scanner is the following:
+The standard setup for a scanner is as follows:
 ![Scanner setup](/documentation/scanner-setup.PNG)
-Integrate a scanner is very easy. The code is almost the same of **JavaPOS**.<br>
+Integrating a scanner is very easy. The code is almost the same of **JavaPOS**.<br>
 ### Open the communication
 Instantiate a *Scanner* object, open it, and claim the port:
 ~~~java
@@ -38,9 +38,9 @@ scanner.open(logicalName, context);
 scanner.claim(requestListener);
 ~~~
 *requestListener* is an interface, responsible for handling the success or the failure of the port claiming.<br>
-**The user must explicitly grant a dedicated permission** to allow the application to claim a port.
+**The user must explicitly grant a dedicated permission**, to allow the application to claim a port.
 ### Register for scan events
-To register for data events, register an *EventListener*, set to false the auto disable, enable data events and device communication:
+To register for data events it is necessary to register an *EventListener*, to set to false the auto disable and to enable data events and device communication:
 ~~~java
 scanner.addEventListener(listener, EventCallback.EventType.Data);
 scanner.setAutoDisable(false);
@@ -60,7 +60,7 @@ scanner.close();
 ~~~
 All of this is fully UPOS compliant and identical to JavaPOS.
 ## Integrate a scale
-The generic setup for a scale is the following:
+The standard setup for a scale is as follows:
 ![Scale setup](/documentation/scale-setup.PNG)
 ### Open the communication
 Instantiate a *Scale* object, open it, and claim the port:
@@ -85,7 +85,7 @@ scale.release();
 scale.close();
 ~~~
 ## Configuration
-The library can be configured using a configuration file, exactly as JavaPOS and UPOS requirements. The only difference is the format of the file: **json**. In the asset folder of the project an apos.json file must be set. The sample application provides an [example](https://github.com/datalogic/androidPOS-sampleApp/blob/main/app/src/main/assets/apos.json) of the file.
+The library can be configured using a configuration file, exactly as JavaPOS and UPOS requirements. The only difference is the format of the file: **json**. In the asset folder of the project an *apos.json* file must be edited. The sample application provides an [example](https://github.com/datalogic/androidPOS-sampleApp/blob/main/app/src/main/assets/apos.json) of this file.
 # Tested devices
 The following table lists only tests performed with OEM communication.
 | Device 			| Lifecycle | Get Weight 	| Receive labels 	| Retrieve statistics 	|Firmware comparison|Firmware upgrade	|
