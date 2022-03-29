@@ -86,3 +86,19 @@ scale.close();
 ~~~
 ## Configuration
 The library can be configured using a configuration file, exactly as JavaPOS and UPOS requirements. The only difference is the format of the file: **json**. In the asset folder of the project an apos.json file must be set. The sample application provides an examples of the file.
+# Tested devices
+The following table lists only tests performed with OEM communication.
+| Device 			| Lifecycle | Get Weight 	| Receive labels 	| Retrieve statistics 	|Firmware comparison|Firmware upgrade	|
+| ---- 				| ---- 		| ---- 			| ---- 				| ---- 					| ---- 				| ---- 				|
+| QuickScan QD2590 	| V 		| NS 			| V 				| V 					| V 				| V 				| 
+| Gryphon GD4590 	| V 		| NS 			| V 				| V 					| V 				| V 				|
+| Gryphon GD4520 	| V 		| NS 			| V 				| V					 	| V 				| V 				|
+| PowerScan PD9630	| V*		| NS			| V*				| V*					| V*				| -					|
+| PowerScan PD9530	| V			| NS			| V					| V						| V					| V					|
+| Magellan 9800i	| V			| V				| V					| V						| V					| -					|
+
+  (*)- requires an external power plug.
+# Useful links
+- *[Datalogic Javapos](https://datalogic.github.io/javapos/overview/)*
+- *[UPOS standard](https://www.omg.org/spec/UPOS/)*
+- *[Sample application](https://github.com/datalogic/androidPOS-sampleApp)*
