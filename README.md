@@ -1,12 +1,12 @@
 [![](https://jitpack.io/v/datalogic/androidpos-core.svg)](https://jitpack.io/#datalogic/androidpos-core)
 # Description
-This project contains the core of the **AndroidPOS** project. AndroidPOS is the porting on Android of the [Datalogic JavaPOS library](https://datalogic.github.io/javapos/overview/). Implements the [UPOS standard](https://www.omg.org/spec/UPOS/) (v 1.14) to allow Android POS/POE/tablet to communicate with Datalogic scanners and scale.<br>
+This project contains the core of the **AndroidPOS** project. AndroidPOS is the porting on Android of the [Datalogic JavaPOS library](https://datalogic.github.io/javapos/overview/). Implements the [UPOS standard](https://www.omg.org/spec/UPOS/) (v 1.14) to allow Android POS/POE/tablet to communicate with Datalogic scanners and scales.<br>
 Communication is supported **USB-OEM only, USB-COM is included but it does not work on all devices**.<br>
 The Android module :
-- Allows to listen for scan or weight events.
-- Allows Firmware comparison and update.
-- Allows statistics retrieval from device (both UPOS and Avalanche format).
-- Allows to send commands to devices.
+- allows to listen for scan or weight events.
+- allows Firmware comparison and update.
+- allows statistics retrieval from device (both UPOS and Avalanche format).
+- allows to send commands to devices.
 
 A sample app, is available [here](https://github.com/datalogic/androidPOS-sampleApp).
 # How to use the library
@@ -37,7 +37,7 @@ Scanner scanner = new Scanner();
 scanner.open(logicalName, context);
 scanner.claim(requestListener);
 ~~~
-The *request listener* is an interface, responsible to handle the success or the failure of the port claiming.<br>
+*requestListener* is an interface, responsible for handling the success or the failure of the port claiming.<br>
 **The user must explicitly grant a dedicated permission** to allow the application to claim a port.
 ### Register for scan events
 To register for data events, register an *EventListener*, set to false the auto disable, enable data events and device communication:
@@ -69,7 +69,7 @@ Scale scale = new Scale();
 scale.open(logicalName, context);
 scale.claim(requestListener);
 ~~~
-The *request listener* is an interface, responsible to handle the success or the failure of the port claiming.<br>
+*requestListener* is an interface, responsible for handling the success or the failure of the port claiming.<br>
 **The user must explicitly grant a dedicated permission** to allow the application to claim a port.
 ### Get weight
 To get weight, enable data events and ask for the weight to the scale:
