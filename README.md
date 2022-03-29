@@ -85,7 +85,7 @@ scale.release();
 scale.close();
 ~~~
 ## Configuration
-The library can be configured using a configuration file, exactly as JavaPOS and UPOS requirements. The only difference is the format of the file: **json**. In the asset folder of the project an apos.json file must be set. The sample application provides an examples of the file.
+The library can be configured using a configuration file, exactly as JavaPOS and UPOS requirements. The only difference is the format of the file: **json**. In the asset folder of the project an apos.json file must be set. The sample application provides an [example](https://github.com/datalogic/androidPOS-sampleApp/blob/main/app/src/main/assets/apos.json) of the file.
 # Tested devices
 The following table lists only tests performed with OEM communication.
 | Device 			| Lifecycle | Get Weight 	| Receive labels 	| Retrieve statistics 	|Firmware comparison|Firmware upgrade	|
