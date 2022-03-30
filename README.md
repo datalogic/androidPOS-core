@@ -87,7 +87,7 @@ scale.close();
 ## Configuration
 The library can be configured using a configuration file, exactly as JavaPOS and UPOS requirements. The only difference is the format of the file: **json**. In the asset folder of the project an *apos.json* file must be edited. The sample application provides an [example](https://github.com/datalogic/androidPOS-sampleApp/blob/main/app/src/main/assets/apos.json) of this file.
 # Tested devices
-The following table lists only tests performed with OEM communication.
+The following table lists a set of Datalogic devices tested via USB-OEM.
 | Device 			| Lifecycle | Get Weight 	| Receive labels 	| Retrieve statistics 	|Firmware comparison|Firmware upgrade	|
 | ---- 				| ---- 		| ---- 			| ---- 				| ---- 					| ---- 				| ---- 				|
 | QuickScan QD2590 	| V 		| NS 			| V 				| V 					| V 				| V 				| 
@@ -98,6 +98,10 @@ The following table lists only tests performed with OEM communication.
 | Magellan 9800i	| V			| V				| V					| V						| V					| -					|
 
   (*)- requires an external power plug.
+
+The following Android devices has been used to test:
+- HP Engage one prime,
+- Galaxy Tab A.
 # Useful links
 - *[Datalogic Javapos](https://datalogic.github.io/javapos/overview/)*
 - *[UPOS standard](https://www.omg.org/spec/UPOS/)*
