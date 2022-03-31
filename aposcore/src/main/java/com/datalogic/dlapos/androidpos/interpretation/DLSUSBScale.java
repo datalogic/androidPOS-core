@@ -578,7 +578,6 @@ public class DLSUSBScale extends DLSScale {
         int nResp = 0;
 
         synchronized (objStatus) {             // Lock the object
-            //TODO:Add an & to clean data, this avoids clashes
             nResp |= (inBuf[0] & 0x000000FF);                  // Lets put all three bytes
             nResp |= ((inBuf[1] & 0x000000FF) << 8);             //  of the status response into
             nResp |= ((inBuf[2] & 0x000000FF) << 16);            //  a 4 byte integer for easy comparisons.

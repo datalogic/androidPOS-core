@@ -141,7 +141,6 @@ public class DLSUSBFlash extends DLSDevice {
     @Override
     public void onDeviceReattached() {
         fireDeviceStatusEvent(CommonsConstants.SUE_POWER_ONLINE);
-        //TODO: @George, is there a reason for this? Furthermore reattachingPending is always true.
         if (reattachPending) {                 // If an automatic re-attach is pending
             reattachPending = true;                // due to a re-set or flash (hot plug fix 1.8.13)
             port.openPort();                        // Re-open the port

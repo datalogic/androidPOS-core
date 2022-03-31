@@ -1109,47 +1109,6 @@ public abstract class DLSJposConst {
      */
     public static final String DLS_S_NUM_ATTACHED_DEVICES = "NumberOfAttachedDevices";
 
-//    /* Constants for PID of DL-based USB COM scanners
-//     * @TODO: Remove the product id versions as only using vid and excluding
-//     * PN events on the service port.
-//     */
-//    public static final String DLA_SCANNER_VID = "VID_05F9";
-//    public static final String DLA_RFID_SCANNER_VID = "VID_0403";
-//    public static final String DLA_HH_SCANNER_VID = "080C";
-//    public static final String TEST_PORT_PID = "PID_4000";
-//
-//    //are these necessary?
-//    public static final String DLA_SCANNER_PID_1 = "PID_4002";
-//    public static final String DLA_SCANNER_PID_2 = "PID_4202";
-//    public static final String DLA_SCANNER_PID_3 = "PID_4204";
-//    public static final String DLA_SCANNER_PID_4 = "PID_4502";
-//    public static final String DLA_SCANNER_PID_5 = "PID_4504";
-//    public static final String DLA_SCANNER_PID_6 = "PID_4505";
-//    public static final String DLA_SCANNER_PID_7 = "PID_4506";
-//    public static final String DLA_SCANNER_PID_8 = "PID_4507";
-//    public static final String DLA_SCANNER_PID_9 = "PID_4509";
-//    public static final String DLA_SCANNER_PID_10 = "PID_4601";
-//    public static final String DLA_SCANNER_PID_11 = "PID_4602";
-//    public static final String DLA_SCANNER_PID_12 = "PID_4000";
-//    public static final String DLA_SCANNER_PID_13 = "PID_4001";
-//    public static final String DLA_SCANNER_PID_14 = "PID_4003";
-//    public static final String DLA_SCANNER_PID_15 = "PID_0400";
-//    public static final String DLA_SCANNER_PID_16 = "PID_1511";
-
-
-//    /* Const for PID of HP-based scanners */
-//    public static final String HP_SCANNER_VID = "VID_03F0";
-//    public static final String HP_IMAGING_SCANNER = "PID_0339";
-//    public static final String HP_PRESENTATION_SCANNER = "PID_0239";
-//    public static final String HP_LINEAR_SCANNER = "PID_0D39";
-//    public static final String HP_INTEGRATED_SCANNER = "PID_0E39";
-//    public static final String HP_KIOSK_SCANNER = "PID_1039";
-//    public static final String HP_WIRELESS_SCANNER = "PID_1139";
-//    public static final String HP_SCANNER_7 = "PID_1339";
-//    public static final String HP_SCANNER_8 = "PID_1439";
-//    public static final String HP_SCANNER_9 = "PID_1F39";
-//    public static final String HP_SCANNER_10 = "PID_2439";
-
 
     /**
      * PowerScan 9xxx statistics battery charge cycles.

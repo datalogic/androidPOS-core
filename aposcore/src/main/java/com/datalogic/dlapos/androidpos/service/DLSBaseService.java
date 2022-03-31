@@ -50,7 +50,7 @@ public class DLSBaseService implements BaseService, DeviceErrorStatusListener, D
     private EventCallback eventCallbacks;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     protected HashMap<String, Object> statistics;
-    private List<String> scannerInfo = new ArrayList<>(); //TODO: never used
+    private List<String> scannerInfo = new ArrayList<>();
 
     private boolean enablePoll;
     protected boolean freezeEvents;
@@ -291,15 +291,6 @@ public class DLSBaseService implements BaseService, DeviceErrorStatusListener, D
         statistics.put(DLSJposConst.DLS_S_CAP_UPDATE_STATS, getCapUpdateStatistics());
         statistics.put(DLSJposConst.DLS_S_CAP_COMP_FW_VER, getCapCompareFirmwareVersion());
         statistics.put(DLSJposConst.DLS_S_CAP_UPDATE_FW, getCapUpdateFirmware());
-        // TODO: These are WMI and MBeans specific apparently. May be able to be removed.
-        /* I agree, so long as we are not supporting physical statistics files on Android.  There
-           are three ways for customers to have Remote Management.  The first is a flat text file
-           called scanner_info.txt that is created each time a device is claimed.  The second is WMI
-           and the third is jmx.  If WMI and JMX are not supported, our customers expect to be
-           able to see the statistics through the text file.  If we remove this, there is no way
-           for customers to be able to see statistics without writing an implementation that gathers
-           statistics and presents them in a format suitable for the customer.
-         */
         DLSDeviceInfo info = device.getDeviceInfo();
         statistics.put(DLSJposConst.DLS_S_CAPTION, info.getVendorName());
         statistics.put(DLSJposConst.DLS_S_DESCRIPTION, info.getDeviceDescription());
@@ -459,15 +450,13 @@ public class DLSBaseService implements BaseService, DeviceErrorStatusListener, D
                 release();
             }
         } catch (APosException je) {
-            //TODO: correct throwing after fixes in Control
-            // The exception is intentionally not thrown here.
-            // This is to make sure that the device instance sets the closed flag to false.
+
         }
         try {
             device.close();
             deviceState = CommonsConstants.S_CLOSED;
         } catch (DLSException de) {
-            //TODO: correct throwing after fixes in Control
+
         }
     }
 
@@ -526,9 +515,6 @@ public class DLSBaseService implements BaseService, DeviceErrorStatusListener, D
         } catch (DLSException de) {
             throw new APosException(de.getLocalizedMessage(), ErrorConstants.APOS_E_FAILURE);
         }
-        // TODO: If notRun is needed, set it to true here.
-        // TODO: If claim lock file is needed, put the removal here.
-        // TODO: If WMI is needed, put unregister here.
     }
 
     /**
@@ -587,18 +573,6 @@ public class DLSBaseService implements BaseService, DeviceErrorStatusListener, D
 
         //Build the XML string to return via reference variable statisticsBuffer.
         stats.buildXMLString(statistics, statisticsBuffer);
-
-        //TODO: WMI related, probably can be removed
-        //Perform service level operations and call stats object version.
-        //this.loadWMI();
-
-        //DLSDeviceInfo info = device.getDeviceInfo();
-        //String scannerInfoFilename = info.getDeviceClass() + "_" + options.getInfoFilename() + ".txt";
-        //TODO: What does it means to have avalance enabled?
-//        boolean avalancheEnabled = options.getAvalancheEnabled();
-        //      boolean avalancheEnabled = false;
-
-        //TODO: here we have to decide how to handle the file, save it is not the right thing to do.
 
         //The second item of the buffer is used to store the info file.
         statisticsBuffer[1] = stats.scannerInfoFile(statistics, false);
@@ -840,7 +814,6 @@ public class DLSBaseService implements BaseService, DeviceErrorStatusListener, D
         if (this.device != null) {
             result = device.getDeviceInfo().getProductDescription();
         }
-        // TODO: In JavaPOS, this method contains a scale setting routine. Fix it.
         return result;
     }
 

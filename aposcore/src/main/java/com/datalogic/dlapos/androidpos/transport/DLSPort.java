@@ -363,7 +363,6 @@ public abstract class DLSPort {
     /**
      * Function to remove all internal listeners.
      */
-    // TODO: Determine if this method can be removed.
     public void removeInternalListeners() {
     }
 

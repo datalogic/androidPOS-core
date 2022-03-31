@@ -489,7 +489,7 @@ public class DLSScannerService extends DLSBaseService implements ScannerBaseServ
                 result[0] = CommonsConstants.CVF_FIRMWARE_NEWER;
             } else if (nFileECVer < nScanECVer) {
                 result[0] = CommonsConstants.CVF_FIRMWARE_OLDER;
-            } else if (nFileECVer == 0 || nScanECVer == 0) {//TODO: this is unreachable.
+            } else if (nFileECVer == 0 || nScanECVer == 0) {
                 result[0] = CommonsConstants.CVF_FIRMWARE_DIFFERENT;
             }
 
@@ -892,52 +892,6 @@ public class DLSScannerService extends DLSBaseService implements ScannerBaseServ
 
         DLSDeviceInfo info = device.getDeviceInfo();
         super.decodeType = info.getOption(DLSDeviceInfo.KEY_DECODETYPE);
-        //TODO: check if it is all necessary
-//        boolean canAcceptStats = config.getOptionAsBool(DLSScaleConfig.KEY_CANACCEPTSTATISTICSCMD);
-//        options = DLSProperties.getInstance(context);
-//        boolean getStatsOnClaim = options.getStatsOnClaim();
-//        boolean iHSOnClaim = config.getOptionAsBool(DLSScannerConfig.KEY_SENDIHSONCLAIM);
-//
-//        if (iHSOnClaim && canAcceptStats && getStatsOnClaim) {
-//            /*
-//             * This will only retrieve statistics if:
-//             *   The com.{brand}.jpos.common.ScannerService.generateStatsOnEveryClaim property is true
-//             *   The apos.json setting canAcceptStatisticsCmd is true
-//             *   The apos.json setting sendIHSOnClaim is true
-//             */
-//            super.retrieveStatistics(temp);
-//        }
-//
-//        //TODO: there is no JMX support on Android
-//        //TODO: skip WMI on a first version
-////        /* 136419 - Adding a not-null override to this assignment to prevent
-////         *  the assignment from being overwritten if it was already assigned
-////         *  during the call to super.retrieveStatistics().
-////         */
-////        if (iHSOnClaim && mBeansEnabled && canAcceptStats) {
-////            // populate the MBeans data.
-////            if (agent == null) {
-////                agent = new ScannerScaleAgent(wmiStatistics, "Scanner");
-////            }
-////        }
-//
-//        boolean canNotifyPower = config.getOptionAsBool(DLSScannerConfig.KEY_CANNOTIFYPOWERCHANGE);
-//        int myPowerNotify = getPowerNotify();
-//        int capPowerReporting = getCapPowerReporting();
-//
-//        if (canNotifyPower && (capPowerReporting == CommonsConstants.PR_STANDARD) && (myPowerNotify != 0)) {
-//            setPowerState(CommonsConstants.PS_ONLINE);
-//        }
-//        HashMap<String, Object> configItems = config.mapConfigItems;
-//
-//        if (category.toUpperCase().contains("SCANNER")) {
-//            boolean bCanAcceptConfigItems = config.getOptionAsBool("canAcceptConfigItems");
-//            boolean bCanProgramConfigOnClaim = config.getOptionAsBool("canProgramConfigOnClaim");
-//            boolean bHasConfigItems = configItems.isEmpty();
-//            if ((!bHasConfigItems) && bCanAcceptConfigItems && bCanProgramConfigOnClaim) {
-//                loadConfigItems(configItems);
-//            }
-//        }
     }
 
     /**

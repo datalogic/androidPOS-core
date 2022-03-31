@@ -66,7 +66,7 @@ public class DLSUSBScanner extends DLSScanner {
     byte[] statusBuf = null;
     byte[] reportBuf = null;
     boolean localAlive = false;
-    private final boolean raiseBusy = true;//TODO: is always true. Is it necessary?
+    private final boolean raiseBusy = true;
 
     // fast CFR
     static final byte[] cellPhoneModeECOMMEnter = {0x30, 0x00, 0x70, 0x01, 0, 0, 0, 0, 0, 0, 0};
@@ -468,7 +468,7 @@ public class DLSUSBScanner extends DLSScanner {
                     buf = sendReceiveCmd(disableBeepCmd);
                     data[0] = -1;
                     if (buf.length > 0) {
-                        if ((buf[0] & 0x10) == 0) {//TODO: is it correct??
+                        if ((buf[0] & 0x10) == 0) {
                             data[0] = 0;
                         } else {
                             data[0] = 1;
@@ -720,7 +720,7 @@ public class DLSUSBScanner extends DLSScanner {
                     }
                     resultString += oSb.toString();
 //                    try {
-//                        //TODO: We have access only to internal memory of the application. Can we just return in the object the output and let the user to decide what to do with it?
+//                        //TODO: Can we just return in the object the output and let the user to decide what to do with it?
 //                        File eventFile = new File(fileName);
 //                        output = new BufferedWriter(new FileWriter(eventFile));
 //                        output.write(resultString);
@@ -769,7 +769,7 @@ public class DLSUSBScanner extends DLSScanner {
                     resultString += oSb.toString();
 
 //                    try {
-//                        //TODO: We have access only to internal memory of the application. Can we just return in the object the output and let the user to decide what to do with it?
+//                        //TODO: Can we just return in the object the output and let the user to decide what to do with it?
 //                        File statFile = new File(fileName);
 //                        output = new BufferedWriter(new FileWriter(statFile));
 //                        output.write(resultString);

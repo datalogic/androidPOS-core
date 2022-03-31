@@ -1051,7 +1051,7 @@ public class DLSSerialScanner extends DLSScanner {
                 byte[] barcode = extractBarcodeLabel(tmpBuf, identifierLength);
 
                 //Check for addons to modify type.
-                //type = LabelParser.addOns(barcode, type); TODO:WUT??
+                //type = LabelParser.addOns(barcode, type); TODO: check if useful
 
                 boolean sendCookedData = options.isSendCookedData();
                 // make them both the same

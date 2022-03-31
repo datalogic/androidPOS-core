@@ -92,22 +92,6 @@ public class DLSScaleService extends DLSBaseService implements ScaleBaseService,
         DLSCConfig dConfig = scale.getConfiguration();
         bCanAcceptStats = dConfig.getOptionAsBool(DLSScaleConfig.KEY_CANACCEPTSTATISTICSCMD);
 
-        //TODO: is this onlt WMI related?? CAP_TARE requires enable.
-//        if (bCanAcceptStats) {
-//            retrieveScaleStatistics(temp);
-//            super.statistics.put(DLSJposConst.DLS_S_SCALE_CAP_DISP_TEXT, (this.getCapDisplayText() ? "True" : "False"));
-//            super.statistics.put(DLSJposConst.DLS_S_SCALE_CAP_PRICE_CALC, (this.getCapPriceCalculating() ? "True" : "False"));
-//            super.statistics.put(DLSJposConst.DLS_S_SCALE_CAP_TARE_WT, (this.getCapTareWeight() ? "True" : "False"));
-//            super.statistics.put(DLSJposConst.DLS_S_SCALE_CAP_ZERO, (this.getCapZeroScale() ? "True" : "False"));
-//            super.statistics.put(DLSJposConst.DLS_S_SCALE_STAT_UPDATE, (this.getCapStatusUpdate() ? "True" : "False"));
-//        }
-//        try {
-//            if (!scale.isAlive()) {
-//                throw new APosException("Error - no response from scale", ErrorConstants.APOS_E_ILLEGAL);
-//            }
-//        } catch (DLSException ex) {
-//            throw new APosException(ex.getMessage(), ErrorConstants.APOS_E_ILLEGAL);
-//        }
     }
 
     // 1.2
@@ -1148,16 +1132,6 @@ public class DLSScaleService extends DLSBaseService implements ScaleBaseService,
      *                       or if an exception is encountered while retrieving i-h-s data.
      */
     void retrieveScaleStatistics(String[] statisticsBuffer) throws APosException {
-        /*
-         TODO: This method does not populate the statisticsBuffer variable.
-         I am not sure what the buffer is supposed to be populated with as the
-         statistics instance is a HashMap of Strings.  The statisticsBuffer
-         variable is a flat String array.  It would be perfectly acceptable
-         to populate the variable with a flattened HashMap.
-         The array itself is unspecified size, so it is very difficult to actually
-         populate it from this method as it might require re-allocating the
-         array to accommodate the size of the statistics.
-         */
         if (statisticsBuffer == null) {
             return;
         }
@@ -1186,7 +1160,6 @@ public class DLSScaleService extends DLSBaseService implements ScaleBaseService,
         firmware = (String) statistics.get(DLSJposConst.DLS_S_FIRMWARE_VERSION);   // Get firmware
         if (model == null) {
             model = "";                        // If null, set to empty string
-            //TODO: It was DLSJposConst.DLS_S_SERIAL_NUMBER but probably it should be DLSJposConst.DLS_S_MODEL_NAME
             statistics.put(DLSJposConst.DLS_S_MODEL_NAME, model);
         }
         if (serial == null) {

@@ -549,15 +549,9 @@ public abstract class DLSDevice
                 // Add to message list
                 messageList.add(tmpBuf);
                 outputStream.reset();                               // Reset buffer
-                // TODO:  FIX FIX FIX!!!!
-                // Use a timeout on data from the the port instead of a terminating character
-                // the following is a temporary fix in that the sun javax.comm driver
-                // replaces the OxOD (CR) with 0x0A (LF) when starting
-                // either the tty terminfo needs to be setup correctly or look
-                // for either CR & LF
             } else if ((inBuf[i] == endChar) || (bUseCR_OR_LF && (inBuf[i] == 0x0a))) {
                 // If this is the end character
-                if (useBCC) {// TODO: Only used is single cable, do we need it?
+                if (useBCC) {
                     // Set flag to need block check character.
                     needBCC = true;
                 } else {

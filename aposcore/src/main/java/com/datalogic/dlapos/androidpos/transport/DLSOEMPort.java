@@ -156,7 +156,6 @@ public class DLSOEMPort extends DLSUsbPort {
 
         @Override
         protected void onPostExecute(Integer integer) {
-            //TODO: Remove this.
             if (integer < 0) {
                 Log.e(TAG, "Command could not be sent");
             } else {

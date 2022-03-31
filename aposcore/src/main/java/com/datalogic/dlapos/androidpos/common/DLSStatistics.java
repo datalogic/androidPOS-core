@@ -457,8 +457,6 @@ public class DLSStatistics {
         addLine(sb, "# Copyright 2012, " + Branding.getInstance().getBrandingName());
         addLine(sb, "# EOF");
 
-        //TODO: handle Avalanche here if it is supported.
-
         return sb.toString();
     }
 
