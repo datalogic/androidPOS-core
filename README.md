@@ -102,6 +102,11 @@ The following table lists a set of Datalogic devices tested via USB-OEM.
 The following Android devices has been used to test:
 - HP Engage one prime,
 - Galaxy Tab A.
+
+Tested Android versions are:
+- **Android 8**,
+- **Android 9**.
+  
 # Useful links
 - *[Datalogic Javapos](https://datalogic.github.io/javapos/overview/)*
 - *[UPOS standard](https://www.omg.org/spec/UPOS/)*
